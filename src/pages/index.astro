@@ -1,7 +1,7 @@
 ---
 // import Welcome from '../components/Welcome.astro';
-// import Layout from '../layouts/Layout.astro';
-import '../styles/global.css';
+import Layout from '../layouts/Layout.astro';
+// import '../styles/global.css';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -15,8 +15,84 @@ import '../styles/global.css';
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} >
     <title>Astro</title>
+    <!-- Put this anywhere in your HTML -->
+<audio id="global-player" preload="auto"></audio>
   </head>
   <body>
-    <h1>Coming Soon...</h1>
+    <Layout>
+      <main class="universe-container">
+        <div class="stars-base"></div>
+        <div class="foreground-image">
+          <img src="../images/etamine_logo.png" alt="Etamine-logo" class="logo"></div>
+        </div>
+        <div class="video-backgrounds">
+          <video id="video-rotating-bodies" class="track-video" src="/video/rotating-bodies-video.mp4" muted loop playsinline></video>
+          <!-- <video id="video-3-cycle" class="track-video" src="/video/3-cycle.mp4" muted loop playsinline></video>
+          <video id="video-london" class="track-video" src="/video/london.mp4" muted loop playsinline></video> -->
+        </div>
+        <nav class="star-map">
+          <div class="track-item" style="top: 20%; left: 15%;" data-track="rotating-bodies" data-audio="/audio/rotating-bodies.mp3">
+            <div class="label">
+              <span class="track-name">Rotating Bodies</span>
+              <div class="arrow" style="transform: rotate(0deg);"></div>
+            </div>
+          </div>
+          <div class="track-item" style="top: 50%; left: 70%;" data-track="3-cycle-multi-programme" data-audio="/audio/3-cycle-multi-programme.mp3">
+            <div class="label">
+              <span class="track-name">3 Cycle Multi-Programme</span>
+              <div class="arrow" style="transform: rotate(90deg);"></div>
+            </div>
+          </div>
+          <div class="track-item" style="top: 80%; left: 45%;" data-track="london-extended-stay" data-audio="/audio/london-extended-stay.mp3">
+            <div class="label">
+              <span class="track-name">London Extended Stay</span>
+              <div class="arrow" style="transform: rotate(225deg);"></div>
+            </div>
+          </div>
+        </nav>
+      </main>
+
+    </Layout>
   </body>
 </html>
+
+<script>
+  // 1. Find all the stars/tracks
+  const trackItems = document.querySelectorAll('.track-item');
+  // 2. Find the hidden audio element
+  const player = document.getElementById('global-player');
+
+  trackItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      // 3. THIS IS THE LINK: Get the path from the data-audio attribute
+      const trackId = item.getAttribute('data-track');
+      const audioPath = item.getAttribute('data-audio');
+
+      // 4. Tell the player which file to use and play it
+      player.src = audioPath;
+      player.play().catch(e => console.log("Audio blocked until user interacts with page."));
+      item.classList.add("track-item-hover");
+
+      const targetVideo = document.getElementById(`video-${trackId}`);
+      if (targetVideo) {
+        targetVideo.classList.add('active');
+        targetVideo.play();
+      }
+    });
+
+    item.addEventListener('mouseleave', () => {
+      // 5. Stop the music when the mouse leaves
+      const trackId = item.getAttribute('data-track');
+      player.pause();
+      player.currentTime = 0;
+      item.classList.remove("track-item-hover"); // Reset to start
+
+      const targetVideo = document.getElementById(`video-${trackId}`);
+      if (targetVideo) {
+        targetVideo.classList.remove('active');
+        targetVideo.pause();
+        targetVideo.currentTime = 0; // Optional: Reset video to start
+      }
+    });
+  });
+</script>

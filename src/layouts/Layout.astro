@@ -1,3 +1,8 @@
+---
+// Layout.astro
+import '@fontsource/vt323';
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -6,18 +11,112 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Etamine</title>
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+  :root {
+  /* Define your palette here */
+  --primary-color: #ADAB85;
+  --secondary-color: #51C2E9;
+  --background-dark: #180811;
+  --text-light: #D6D2BF;
+  --accent-pixel: #00ff41; /* Great for that VT323 font! */
+  }
+  html,
+  body {
+    font-family: 'VT323', monospace;
+    font-size: 24px;
+    color: var(--secondary-color);
+    background-repeat: no-repeat;
+    background-size: cover; /* Resizes image to cover the entire screen */
+    background-position: center; /* Centers the image */
+    background-attachment: fixed;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .universe-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    overflow: hidden;
+  }
+  .stars-base {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: url(../images/Etamine_stars_16:9.jpg) center/cover no-repeat;
+  }
+  .foreground-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* This perfectly centers the div */
+    z-index: 5; /* Higher than stars (1), lower than tracks (10) */
+    pointer-events: none; /* Allows you to click tracks "through" the logo */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .logo {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 47%;
+    height: auto;
+  }
+  .track-item {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+    cursor: pointer;
+  }
+ /* .arrow {
+  width: 2px;
+  height: 30px;
+  background-color: var(--secondary-color);
+  /* This ensures the arrow rotates from its center or top */
+  /* transform-origin: top center;
+  transition: transform 0.3s ease, height 0.3s ease;
+/* } */
+
+/* Optional: Adding a little triangle head to the arrow */
+/* .arrow::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--accent-pixel);
+} */
+  .track-item-hover {
+    font-weight: bold;
+    color: var(--text-light);
+  }
+  .track-video {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* Keeps video full screen without stretching */
+  z-index: 2;        /* Sits above stars (1) but below tracks (10) */
+  opacity: 0;
+  transition: opacity 0.8s ease; /* Smooth fade in/out */
+  pointer-events: none;
+}
+
+.track-video.active {
+  opacity: 1;
+}
 </style>
