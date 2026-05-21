@@ -31,7 +31,7 @@ import '@fontsource/vt323';
   body {
     font-family: 'VT323', monospace;
     font-size: 24px;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     background-repeat: no-repeat;
     background-size: cover; /* Resizes image to cover the entire screen */
     background-position: center; /* Centers the image */
@@ -79,27 +79,46 @@ import '@fontsource/vt323';
     align-items: center;
     z-index: 10;
     cursor: pointer;
+    transition: opacity 0.3s ease;
   }
- /* .arrow {
-  width: 2px;
-  height: 30px;
-  background-color: var(--secondary-color);
-  /* This ensures the arrow rotates from its center or top */
-  /* transform-origin: top center;
-  transition: transform 0.3s ease, height 0.3s ease;
-/* } */
+  .track-container:hover .track-item {
+  opacity: 0; /* Make them disappear (or use 0.2 to make them dim) */
+  pointer-events: none; /* Optional: stops them from being clickable while hidden */
+}
+.track-container:hover .track-item:hover {
+  opacity: 1;
+  pointer-events: auto; /* Keeps the hovered item interactive */
+}
+  .arrow-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+}
+  .arrow {
+  width: 1px;
+  background-color: var(--primary-color);
+  position: relative; /* CRITICAL: Anchors the absolute pseudo-element */
+}
 
 /* Optional: Adding a little triangle head to the arrow */
-/* .arrow::after {
+  .arrow::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  /* Push the triangle head completely outside the bottom of the line */
+  bottom: -5px;
   left: 50%;
   transform: translateX(-50%);
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid var(--accent-pixel);
-} */
+  /* Points DOWN toward the star */
+  border-top: 5px solid var(--primary-color);
+}
+  .arrow-target {
+  /* CRITICAL: Creates a gap so the triangle head has room to sit without overlapping the image */
+  margin-top: 8px;
+  display: block;
+}
   .track-item-hover {
     font-weight: bold;
     color: var(--text-light);

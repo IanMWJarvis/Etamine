@@ -23,79 +23,111 @@ import Layout from '../layouts/Layout.astro';
       <main class="universe-container">
         <div class="stars-base"></div>
         <div class="foreground-image">
-          <img src="../images/etamine_logo.png" alt="Etamine-logo" class="logo"></div>
+          <img src="../images/etamine_logo.png" alt="Etamine-logo" class="logo">
         </div>
         <div class="video-backgrounds">
           <video id="video-rotating-bodies" class="track-video" src="/video/rotating-bodies-video.mp4" muted loop playsinline></video>
           <video id="video-3-cycle-multi-programme" class="track-video" src="/video/3-cycle-video.mp4" muted loop playsinline></video>
           <video id="video-london-extended-stay" class="track-video" src="/video/london-extended-video.mp4" muted loop playsinline></video>
-          <video id="video-helicopter-takeoff-at-night" class="track-video" src="/video/helicopter-video.mp4" muted loop playsinline></video>
+          <video id="video-helicopter-takeoff-at-night" class="track-video" src="/video/helicopter-video.mp4" loop playsinline></video>
           <video id="video-the-arrow-of-time" class="track-video" src="/video/arrow-video.mp4" muted loop playsinline></video>
-          <video id="video-antiblue" class="track-video" src="/video/antiblue-video.mp4" muted loop playsinline></video>
+          <video id="video-antiblue" class="track-video" src="/video/antiblue-video.mp4" loop playsinline></video>
           <video id="video-plastic-peaches" class="track-video" src="/video/plastic-peaches-video.mp4" muted loop playsinline></video>
           <video id="video-unnatural-causes" class="track-video" src="/video/unnatural-video.mp4" muted loop playsinline></video>
           <video id="video-zoe" class="track-video" src="/video/zoe-video.mp4" muted loop playsinline></video>
           <video id="video-virtual-traverse" class="track-video" src="/video/virtual-video.mp4" muted loop playsinline></video>
         </div>
         <nav class="star-map">
-          <div class="track-item" style="top: 20%; left: 15%;" data-track="rotating-bodies" data-audio="/audio/rotating-bodies.mp3">
-            <div class="label">
-              <span class="track-name">Rotating Bodies</span>
-              <div class="arrow" style="transform: rotate(0deg);"></div>
+          <div class="track-container">
+            <div class="track-item" style="top: 12%; left: 10%;" data-track="rotating-bodies" data-audio="/audio/rotating-bodies.mp3">
+              <div class="label">
+                <span class="track-name">Rotating Bodies</span>
+                <div class="arrow-container" style="transform: rotate(15deg); transform-origin: top center;">
+                  <div class="arrow" style="height: 30px;"></div>
+                  <img src="images/small-star.png" alt="small-star" class="arrow-target">
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="track-item" style="top: 30%; left: 20%;" data-track="3-cycle-multi-programme" data-audio="/audio/3-cycle-multi-programme.mp3">
-            <div class="label">
-              <span class="track-name">3 Cycle Multi-Programme</span>
-              <div class="arrow" style="transform: rotate(90deg);"></div>
+            <div class="track-item" style="top: 27%; left: 27%;" data-track="3-cycle-multi-programme" data-audio="/audio/3-cycle-multi-programme.mp3">
+              <div class="label">
+                <span class="track-name">3 Cycle Multi-Programme</span>
+                <div class="arrow-container" style="transform: rotate(255deg); transform-origin: right top;">
+                  <div class="arrow"; style="height: 55px"></div>
+                  <img src="images/medium-star.png" alt="medium-star" class="arrow-target">
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="track-item" style="top: 50%; left: 10%;" data-track="london-extended-stay" data-audio="/audio/london-extended-stay.mp3">
-            <div class="label">
-              <span class="track-name">London Extended Stay</span>
-              <div class="arrow" style="transform: rotate(225deg);"></div>
+            <div class="track-item" style="top: 43%; left: 22%;" data-track="london-extended-stay" data-audio="/audio/london-extended-stay.mp3">
+              <div class="label">
+                <span class="track-name">London Extended Stay</span>
+                <div class="arrow-container" style="transform: rotate(115deg); transform-origin: top center;">
+                  <div class="arrow" style="height: 62px"></div>
+                  <img src="images/medium-star.png" alt="medium-star" class="arrow-target">
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="track-item" style="top: 55%; left: 30%;" data-track="helicopter-takeoff-at-night" data-audio="/audio/helicopter-takeoff-at-night.mp3">
-            <div class="label">
-              <span class="track-name">Helicopter Takeoff at Night</span>
-              <div class="arrow" style="transform: rotate(225deg);"></div>
+            <div class="track-item" style="top: 55%; left: 10%;" data-track="helicopter-takeoff-at-night" data-is-video="true">
+              <div class="label">
+                <span class="track-name">Helicopter Takeoff at Night</span>
+                <div class="arrow-container" style="transform: rotate(270deg); transform-origin: top center;">
+                  <div class="arrow" style="height: 54px"></div>
+                  <img src="images/small-star.png" alt="small-star" class="arrow-target">
+                 </div>
+              </div>
             </div>
-          </div>
-          <div class="track-item" style="top: 64%; left: 15%;" data-track="the-arrow-of-time" data-audio="/audio/the-arrow-of-time.mp3">
-            <div class="label">
-              <span class="track-name">The Arrow of Time</span>
-              <div class="arrow" style="transform: rotate(225deg);"></div>
+            <div class="track-item" style="top: 84%; left: 35%;" data-track="the-arrow-of-time" data-audio="/audio/the-arrow-of-time.mp3">
+              <div class="label">
+                <span class="track-name">The Arrow of Time</span>
+                <div class="arrow-container" style="transform: rotate(15deg); transform-origin: top center;">
+                  <div class="arrow" style="height: 33px"></div>
+                  <img src="images/small-star.png" alt="small-star" class="arrow-target">
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="track-item" style="top: 24%; left: 80%;" data-track="antiblue" data-audio="/audio/antiblue.mp3">
-            <div class="label">
-              <span class="track-name">AntiBlue</span>
-              <div class="arrow" style="transform: rotate(225deg);"></div>
+            <div class="track-item" style="top: 14%; left: 62%;" data-track="antiblue" data-is-video="true">
+              <div class="label">
+                <span class="track-name">AntiBlue</span>
+                <div class="arrow-container" style="transform: rotate(35deg); transform-origin: top center;">
+                  <div class="arrow" style="height: 78px"></div>
+                  <img src="images/large-star.png" alt="large-star" class="arrow-target">
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="track-item" style="top: 34%; left: 55%;" data-track="plastic-peaches" data-audio="/audio/plastic-peaches.mp3">
-            <div class="label">
-              <span class="track-name">Plastic Peaches</span>
-              <div class="arrow" style="transform: rotate(225deg);"></div>
+            <div class="track-item" style="top: 34%; left: 55%;" data-track="plastic-peaches" data-audio="/audio/plastic-peaches.mp3">
+              <div class="label">
+                <span class="track-name">Plastic Peaches</span>
+                <div class="arrow-container" style="transform: rotate(310deg); transform-origin: top center;">
+                  <div class="arrow" style="height: 40px"></div>
+                  <img src="images/medium-star.png" alt="medium-star" class="arrow-target">
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="track-item" style="top: 47%; left: 88%;" data-track="unnatural-causes" data-audio="/audio/unnatural-causes.mp3">
-            <div class="label">
-              <span class="track-name">Unnatural Causes</span>
-              <div class="arrow" style="transform: rotate(225deg);"></div>
+            <div class="track-item" style="top: 47%; left: 88%;" data-track="unnatural-causes" data-audio="/audio/unnatural-causes.mp3">
+              <div class="label">
+                <span class="track-name">Unnatural Causes</span>
+                <div class="arrow-container" style="transform: rotate(350deg); transform-origin: top center;">
+                  <div class="arrow" style="height: 55px"></div>
+                  <img src="images/medium-star.png" alt="medium-star" class="arrow-target">
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="track-item" style="top: 55%; left: 65%;" data-track="zoe" data-audio="/audio/zoe.mp3">
-            <div class="label">
-              <span class="track-name">Zoe</span>
-              <div class="arrow" style="transform: rotate(225deg);"></div>
+            <div class="track-item" style="top: 55%; left: 65%;" data-track="zoe" data-audio="/audio/zoe.mp3">
+              <div class="label">
+                <span class="track-name">Zoe</span>
+                <div class="arrow-container" style="transform: rotate(95deg); transform-origin: top center;">
+                  <div class="arrow" style="height: 46px"></div>
+                  <img src="images/small-star.png" alt="small-star" class="arrow-target">
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="track-item" style="top: 80%; left: 86%;" data-track="virtual-traverse" data-audio="/audio/virtual-traverse.mp3">
-            <div class="label">
-              <span class="track-name">Virtual Traverse</span>
-              <div class="arrow" style="transform: rotate(225deg);"></div>
+            <div class="track-item" style="top: 80%; left: 86%;" data-track="virtual-traverse" data-audio="/audio/virtual-traverse.mp3">
+              <div class="label">
+                <span class="track-name">Virtual Traverse</span>
+                <div class="arrow-container" style="transform: rotate(190deg); transform-origin: top center;">
+                  <div class="arrow" style="height: 36px"></div>
+                  <img src="images/small-star.png" alt="small-star" class="arrow-target">
+                </div>
+              </div>
             </div>
           </div>
         </nav>
@@ -112,31 +144,42 @@ import Layout from '../layouts/Layout.astro';
   const player = document.getElementById('global-player');
 
   trackItems.forEach(item => {
+    const isFullVideo = item.getAttribute('data-is-video') === 'true';
+    const trackId = item.getAttribute('data-track');
+    const targetVideo = document.getElementById(`video-${trackId}`);
     item.addEventListener('mouseenter', () => {
       // 3. THIS IS THE LINK: Get the path from the data-audio attribute
-      const trackId = item.getAttribute('data-track');
-      const audioPath = item.getAttribute('data-audio');
 
-      // 4. Tell the player which file to use and play it
-      player.src = audioPath;
-      player.play().catch(e => console.log("Audio blocked until user interacts with page."));
-      item.classList.add("track-item-hover");
+      if (isFullVideo) {
+        item.classList.add("track-item-hover");
 
-      const targetVideo = document.getElementById(`video-${trackId}`);
-      if (targetVideo) {
+        if (targetVideo) {
         targetVideo.classList.add('active');
-        targetVideo.play();
+        targetVideo.play().catch(e => console.log("Audio blocked until user interacts with page."));
+        }
+        // const targetVideo = document.getElementById(`video-${trackId}`);
+      }else {
+        const audioPath = item.getAttribute('data-audio');
+        if (player && audioPath) {
+          player.src = audioPath;
+          player.play().catch(e => console.log("Audio blocked until user interacts with page."));
+        }
+        if (targetVideo) {
+          targetVideo.classList.add('active');
+          targetVideo.play().catch(e => console.log("Video background play blocked"));
+        }
+
       }
     });
 
     item.addEventListener('mouseleave', () => {
       // 5. Stop the music when the mouse leaves
-      const trackId = item.getAttribute('data-track');
-      player.pause();
-      player.currentTime = 0;
+      if (player) {
+        player.pause();
+        player.currentTime = 0;
+      }
       item.classList.remove("track-item-hover"); // Reset to start
 
-      const targetVideo = document.getElementById(`video-${trackId}`);
       if (targetVideo) {
         targetVideo.classList.remove('active');
         targetVideo.pause();
