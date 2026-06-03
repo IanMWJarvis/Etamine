@@ -91,10 +91,10 @@ import '@fontsource/vt323';
   }
   .label {
   position: relative;
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
+  /* align-items: center;
   justify-content: center;
-  height: auto; /* Ensures no hidden height expansions */
+  height: auto; */
 }
     /* --- Base States (When NOT hovering) --- */
   .track-name {
@@ -122,16 +122,13 @@ import '@fontsource/vt323';
   }
   .arrow-container {
   position:absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: max-content;
   opacity: 1; /* Both arrow and star are visible by default */
   transition: opacity 0.3s ease;
-  transform-origin: top center;
+  /* transform-origin: top center; */
 }
   .arrow {
   width: 1px;
@@ -144,13 +141,22 @@ import '@fontsource/vt323';
   content: '';
   position: absolute;
   /* Push the triangle head completely outside the bottom of the line */
-  bottom: -5px;
+  /* bottom: -5px; */
   left: 50%;
   transform: translateX(-50%);
+  bottom: var(--arrow-head-bottom, -5px);
+  top: var(--arrow-head-top, auto);
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   /* Points DOWN toward the star */
-  border-top: 5px solid var(--primary-color);
+  border-top: var(--arrow-tip-down, 5px solid var(--primary-color));
+  border-bottom: var(--arrow-tip-up, none);
+}
+  .arrow.arrow-up::after {
+  bottom: auto;
+  top: -5px; /* Pushes triangle out of the top of the line instead of the bottom */
+  border-top: none;
+  border-bottom: 5px solid var(--primary-color); /* Points UP toward the star */
 }
   .arrow-target {
   /* CRITICAL: Creates a gap so the triangle head has room to sit without overlapping the image */

@@ -42,7 +42,7 @@ import Layout from '../layouts/Layout.astro';
             <div class="track-item" style="top: 12%; left: 10%;" data-track="rotating-bodies" data-audio="/audio/rotating-bodies.mp3">
               <div class="label">
                 <span class="track-name">Rotating Bodies</span>
-                <div class="arrow-container" style="transform: rotate(15deg);">
+                <div class="arrow-container" style="top: 100%; left: 50%; transform: translateX(-50%) rotate(15deg); transform-origin: top center;">
                   <div class="arrow" style="height: 30px;"></div>
                   <img src="images/small-star.png" alt="small-star" class="arrow-target">
                 </div>
@@ -51,9 +51,9 @@ import Layout from '../layouts/Layout.astro';
             <div class="track-item" style="top: 27%; left: 27%;" data-track="3-cycle-multi-programme" data-audio="/audio/3-cycle-multi-programme.mp3">
               <div class="label">
                 <span class="track-name">3 Cycle Multi-Programme</span>
-                <div class="arrow-container" style="transform: rotate(255deg);">
-                  <div class="arrow"; style="height: 55px"></div>
-                  <img src="images/medium-star.png" alt="medium-star" class="arrow-target">
+                <div class="arrow-container" style="bottom: 100%; left: 50%; transform: translateX(-50%) rotate(45deg); transform-origin: bottom center; flex-direction: column-reverse;">
+                  <div class="arrow" style="height: 55px; --arrow-head-bottom: auto; --arrow-head-top: -5px; --arrow-tip-down: none; --arrow-tip-up: 5px solid var(--primary-color);"></div>
+                  <img src="images/medium-star.png" alt="medium-star" class="arrow-target" style="margin-top: 0; margin-bottom: 8px;">
                 </div>
               </div>
             </div>
