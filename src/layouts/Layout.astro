@@ -63,7 +63,15 @@ import '@fontsource/vt323';
     width: 100%;
     display: flex;
     justify-content: center;
+    transition: opacity 0.3s ease-in-out;
   }
+  .universe-container:has(.track-container:hover) .foreground-image {
+    opacity: .9;
+
+  /* CHOOSE ONE BLEND MODE BELOW BASED ON YOUR LOGO: */
+  /* mix-blend-mode: screen; Best if your logo has a dark/black background you want to make invisible */
+    mix-blend-mode: overlay;
+}
   .logo {
 
     display: flex;
@@ -114,10 +122,9 @@ import '@fontsource/vt323';
     pointer-events: none; /* Prevents the invisible items from blocking mouse movements */
   }
 
-  /* 2. Keep the text visible (and optional: make it pop over the video) */
   .track-item:hover .track-name {
     opacity: 1;
-    color: #fff; /* Ensure it stands out against the background video */
+    color: #fff;
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
   }
   .arrow-container {
@@ -126,9 +133,9 @@ import '@fontsource/vt323';
   flex-direction: column;
   align-items: center;
   width: max-content;
-  opacity: 1; /* Both arrow and star are visible by default */
+  opacity: 1;
   transition: opacity 0.3s ease;
-  /* transform-origin: top center; */
+  pointer-events: none;
 }
   .arrow {
   width: 1px;
@@ -156,7 +163,7 @@ import '@fontsource/vt323';
   bottom: auto;
   top: -5px; /* Pushes triangle out of the top of the line instead of the bottom */
   border-top: none;
-  border-bottom: 5px solid var(--primary-color); /* Points UP toward the star */
+  border-bottom: 5px solid var(--primary-color);
 }
   .arrow-target {
   /* CRITICAL: Creates a gap so the triangle head has room to sit without overlapping the image */
