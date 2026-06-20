@@ -208,4 +208,11 @@ import Layout from '../layouts/Layout.astro';
     });
   }
   });
+  export default defineConfig({
+  vite: {
+    server: {
+      allowedHosts: true,
+    },
+  },
+});
 </script>
