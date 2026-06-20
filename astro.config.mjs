@@ -7,5 +7,10 @@ export default defineConfig({
     provider: fontProviders.fontsource(),
     name: "VT323",
     cssVariable: "--font-vt323",
-      }]
+      }],
+  vite: {
+    server: {
+      allowedHosts: true,
+    },
+  },
 });
