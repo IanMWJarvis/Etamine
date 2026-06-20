@@ -9,8 +9,15 @@ import Layout from '../layouts/Layout.astro';
     <!-- <link rel="stylesheet" href="src/styles/global.css"> -->
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} >
-    <title>Astro</title>
-    <!-- Put this anywhere in your HTML -->
+    <title>Étamine (Etamine) - Montreal electronic band</title>
+    <meta name="description" content="Étamine (Etamine) is an electronic music collaboration between Canadian musicians Brock Geiger and Ian Jarvis. Based in Montréal, the duo produce a blend of synthwave, ambient techno and experimental electronic music.">
+    <!-- <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://etaminesounds.com/" />
+    <meta property="og:title" content="Étamine - Étamine (Etamine) is a Montreal-based band. London Extended Stay is their first full length record." />
+    <meta property="og:description" content="Étamine (Etamine) is an electronic music collaboration between Canadian musicians Brock Geiger and Ian Jarvis. Based in Montréal, the duo produce a blend of synthwave, ambient techno and experimental electronic music." />
+    <meta property="og:image" content="https://yourbandsite.com/og-image.jpg" />
+    <meta property="og:site_name" content="Band Name" /> -->
     <audio id="global-player" preload="auto"></audio>
   </head>
   <body>
@@ -70,7 +77,7 @@ import Layout from '../layouts/Layout.astro';
                  </div>
               </div>
             </div>
-            <div class="track-item" style="top: 84%; left: 35%;" data-track="the-arrow-of-time" data-audio="/audio/the-arrow-of-time.mp3">
+            <div class="track-item" style="top: 84%; left: 15%;" data-track="the-arrow-of-time" data-audio="/audio/the-arrow-of-time.mp3">
               <div class="label">
                 <span class="track-name">The Arrow of Time</span>
                 <div class="arrow-container" style="bottom: 30%; left: 100%; transform: translateX(-50%) rotate(105deg); transform-origin: bottom center; flex-direction: column-reverse;">
@@ -88,7 +95,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
               </div>
             </div>
-            <div class="track-item" style="top: 34%; left: 55%;" data-track="plastic-peaches" data-audio="/audio/plastic-peaches.mp3">
+            <div class="track-item" style="top: 34%; left: 58%;" data-track="plastic-peaches" data-audio="/audio/plastic-peaches.mp3">
               <div class="label">
                 <span class="track-name">Plastic Peaches</span>
                 <div class="arrow-container" style="bottom: 100%; left: 50%; transform: translateX(-50%) rotate(325deg); transform-origin: bottom center; flex-direction: column-reverse;">
@@ -126,20 +133,25 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
         </nav>
-        <div class="follow-container" >
+        <div class="mailing-list">
 
-          <a href="https://www.instagram.com/_etamine/" target="_blank">
-            <i class="fa-brands fa-instagram" id="link"></i>
-          </a>
-          <a href="https://www.facebook.com/etaminesounds" target="_blank">
-            <i class="fa-brands fa-facebook" id="link"></i>
-          </a>
-          <a href="https://etamine.bandcamp.com/" target="_blank">
-            <i class="fa-brands fa-bandcamp" id="link"></i>
-          </a>
-          <a href="https://tidal.com/artist/32674769/" target="_blank">
-            <i class="fa-brands fa-tidal" id="link"></i>
-          </a>
+        </div>
+        <div class="follow-container" >
+            <a href="https://www.instagram.com/_etamine/" target="_blank">
+              <i class="fa-brands fa-instagram" id="link"></i>
+            </a>
+            <a href="https://www.facebook.com/etaminesounds" target="_blank">
+              <i class="fa-brands fa-facebook" id="link"></i>
+            </a>
+            <a href="https://etamine.bandcamp.com/" target="_blank">
+              <i class="fa-brands fa-bandcamp" id="link"></i>
+            </a>
+            <a href="https://your-mailchimp-signup-url.com" target="_blank">
+              <i class="fa-regular fa-envelope" id="link"></i>
+            </a>
+            <!-- <a href="https://tidal.com/artist/32674769/" target="_blank">
+              <span id="link">TIDAL</span>
+            </a> -->
         </div>
       </main>
 
