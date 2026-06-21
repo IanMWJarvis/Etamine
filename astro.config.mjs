@@ -8,7 +8,7 @@ export default defineConfig({
     name: "VT323",
     cssVariable: "--font-vt323",
       }],
-  vite: {
+  vite: { //delete before prod!
     server: {
       allowedHosts: true,
     },

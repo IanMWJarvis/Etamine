@@ -24,17 +24,17 @@ import '@fontsource/vt323';
 
 <style is:global>
   :root {
-  /* Define your palette here */
-  --primary-color: #ADAB85;
-  --secondary-color: #51C2E9;
-  --background-dark: #180811;
-  --text-light: #D6D2BF;
-  --accent-pixel: #00ff41; /* Great for that VT323 font! */
+    /* Define your palette here */
+    --primary-color: #ADAB85;
+    --secondary-color: #51C2E9;
+    --background-dark: #180811;
+    --text-light: #D6D2BF;
+    --accent-pixel: #00ff41; /* Great for that VT323 font! */
   }
   html,
   body {
     font-family: 'VT323', monospace;
-    font-size: 20px;
+    font-size: clamp(12px, 4vw, 20px);
     color: var(--primary-color);
     background-repeat: no-repeat;
     background-size: cover; /* Resizes image to cover the entire screen */
@@ -69,6 +69,7 @@ import '@fontsource/vt323';
     justify-content: center;
     transition: opacity 0.3s ease-in-out;
   }
+
   .mailing-list {
     position: absolute;
     bottom: 10%;
@@ -94,19 +95,15 @@ import '@fontsource/vt323';
     align-items: center;
     color: var(--secondary-color);
     transition: opacity 0.3s ease-in-out;
-}
+  }
   #link{
     color: var(--secondary-color);
   }
   .universe-container:has(.track-container:hover) .foreground-image {
     opacity: .9;
-
-  /* CHOOSE ONE BLEND MODE BELOW BASED ON YOUR LOGO: */
-  /* mix-blend-mode: screen; Best if your logo has a dark/black background you want to make invisible */
     mix-blend-mode: overlay;
-}
+  }
   .logo {
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -122,21 +119,91 @@ import '@fontsource/vt323';
     cursor: pointer;
     transition: opacity 0.3s ease;
   }
+  .track-item[data-track="rotating-bodies"] {
+    top: 12%;
+    left: 10%;
+    .arrow {
+      height: 30px;
+    }}
+
+  .track-item[data-track="3-cycle-multi-programme"] {
+    top: 27%;
+    left: 27%;
+    .arrow {
+      height: 55px;
+    }}
+
+  .track-item[data-track="london-extended-stay"] {
+    top: 43%;
+    left: 22%;
+    .arrow {
+      height: 62px;
+    }}
+
+  .track-item[data-track="helicopter-takeoff-at-night"] {
+    top: 65%;
+    left: 10%;
+    .arrow {
+      height: 54px;
+    }}
+
+  .track-item[data-track="the-arrow-of-time"] {
+    top: 84%;
+    left: 15%;
+    .arrow {
+      height: 33px;
+    }}
+
+  .track-item[data-track="antiblue"] {
+    top: 14%;
+    left: 68%;
+    .arrow {
+      height: 78px;
+    }}
+
+  .track-item[data-track="plastic-peaches"] {
+    top: 34%;
+    left: 58%;
+    .arrow {
+      height: 40px;
+    }}
+
+  .track-item[data-track="unnatural-causes"] {
+    top: 47%;
+    left: 78%;
+    .arrow {
+      height: 55px;
+    }}
+
+  .track-item[data-track="zoe"] {
+    top: 55%;
+    left: 65%;
+    .arrow {
+      height: 46px;
+    }}
+
+  .track-item[data-track="virtual-traverse"] {
+    top: 83%;
+    left: 76%;
+    .arrow {
+      height: 36px;
+    }}
+
   .track-container:hover .track-item {
-  opacity: 0; /* Make them disappear (or use 0.2 to make them dim) */
-  pointer-events: none; /* Optional: stops them from being clickable while hidden */
-}
+    opacity: 0; /* Make them disappear (or use 0.2 to make them dim) */
+    pointer-events: none; /* Optional: stops them from being clickable while hidden */
+  }
   .track-container:hover .track-item:hover {
     opacity: 1;
     pointer-events: auto; /* Keeps the hovered item interactive */
   }
   .label {
-  position: relative;
-  display: inline-block;
-  /* align-items: center;
-  justify-content: center;
-  height: auto; */
-}
+    position: relative;
+    display: inline-block;
+    /* align-items: center;
+    justify-content: center;
+    height: auto; */
+  }
     /* --- Base States (When NOT hovering) --- */
   .track-name {
     opacity: 1; /* Always visible */
@@ -150,76 +217,159 @@ import '@fontsource/vt323';
   /* --- Hover States --- */
 
   /* 1. Melt away the entire arrow and star setup instantly */
-  .track-item:hover .arrow-container {
+  .track-item:hover .arrow-container,
+  .track-item.is-active .arrow-container {
     opacity: 0;
-    pointer-events: none; /* Prevents the invisible items from blocking mouse movements */
+    pointer-events: none;
   }
 
-  .track-item:hover .track-name {
+  .track-item:hover .track-name,
+  .track-item.is-active .track-name  {
     opacity: 1;
     color: #fff;
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
   }
+  .track-container.has-active-track .track-item {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .track-container.has-active-track .track-item.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
   .arrow-container {
-  position:absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: max-content;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: max-content;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
   .arrow {
-  width: 1px;
-  background-color: var(--primary-color);
-  position: relative; /* CRITICAL: Anchors the absolute pseudo-element */
-}
+    width: .5px;
+    background-color: var(--primary-color);
+    position: relative; /* CRITICAL: Anchors the absolute pseudo-element */
+  }
 
 /* Optional: Adding a little triangle head to the arrow */
   .arrow::after {
-  content: '';
-  position: absolute;
-  /* Push the triangle head completely outside the bottom of the line */
-  /* bottom: -5px; */
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: var(--arrow-head-bottom, -5px);
-  top: var(--arrow-head-top, auto);
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  /* Points DOWN toward the star */
-  border-top: var(--arrow-tip-down, 5px solid var(--primary-color));
-  border-bottom: var(--arrow-tip-up, none);
-}
+    content: '';
+    position: absolute;
+    /* Push the triangle head completely outside the bottom of the line */
+    /* bottom: -5px; */
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: var(--arrow-head-bottom, -5px);
+    top: var(--arrow-head-top, auto);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    /* Points DOWN toward the star */
+    border-top: var(--arrow-tip-down, 5px solid var(--primary-color));
+    border-bottom: var(--arrow-tip-up, none);
+  }
   .arrow.arrow-up::after {
-  bottom: auto;
-  top: -5px; /* Pushes triangle out of the top of the line instead of the bottom */
-  border-top: none;
-  border-bottom: 5px solid var(--primary-color);
-}
+    bottom: auto;
+    top: -5px; /* Pushes triangle out of the top of the line instead of the bottom */
+    border-top: none;
+    border-bottom: 5px solid var(--primary-color);
+  }
   .arrow-target {
-  /* CRITICAL: Creates a gap so the triangle head has room to sit without overlapping the image */
-  margin-top: 8px;
-  display: block;
-}
+    /* CRITICAL: Creates a gap so the triangle head has room to sit without overlapping the image */
+    margin-top: 8px;
+    display: block;
+  }
   .track-item-hover {
     font-weight: bold;
     color: var(--text-light);
   }
   .track-video {
-  position: absolute;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover; /* Keeps video full screen without stretching */
-  z-index: 2;        /* Sits above stars (1) but below tracks (10) */
-  opacity: 0;
-  transition: opacity 0.8s ease; /* Smooth fade in/out */
-  pointer-events: none;
-}
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Keeps video full screen without stretching */
+    z-index: 2;        /* Sits above stars (1) but below tracks (10) */
+    opacity: 0;
+    transition: opacity 0.8s ease; /* Smooth fade in/out */
+    pointer-events: none;
+  }
 
-.track-video.active {
-  opacity: 1;
-}
+  .track-video.active {
+    opacity: 1;
+  }
+  @media (max-width: 600px) {
+    .foreground-image{
+      width: 90%;
+    }
+
+  }
+  @media (max-width: 480px) {
+    .track-item[data-track="rotating-bodies"]{
+      top: 6%;
+      left: 10%;
+      .arrow{
+        height: 10px;
+      }}
+    .track-item[data-track="3-cycle-multi-programme"] {
+      top: 17%;
+      left: 43%;
+      .arrow{
+        height: 17px;
+      }}
+    .track-item[data-track="london-extended-stay"] {
+      top: 23%;
+      left: 32%;
+      .arrow {
+        height: 20px;
+      }}
+    .track-item[data-track="helicopter-takeoff-at-night"] {
+      top: 30%;
+      left: 45%;
+      .arrow {
+        height: 18px;
+      }}
+    .track-item[data-track="the-arrow-of-time"] {
+      top: 36%;
+      left: 5%;
+      .arrow {
+        height: 11px;
+      }}
+    .track-item[data-track="antiblue"] {
+      top: 63%;
+      left: 54%;
+      .arrow {
+        height: 25px;
+      }}
+    .track-item[data-track="plastic-peaches"] {
+      top: 69%;
+      left: 13%;
+      .arrow {
+        height: 12px;
+      }}
+    .track-item[data-track="unnatural-causes"] {
+      top: 73%;
+      left: 58%;
+      .arrow {
+        height: 17px;
+      }}
+    .track-item[data-track="zoe"] {
+      top: 82%;
+      left: 15%;
+      .arrow {
+        height: 15px;
+      }}
+    .track-item[data-track="virtual-traverse"] {
+      top: 86%;
+      left: 32%;
+      .arrow {
+        height: 12px;
+      }}
+  }
+  /* @media (max-width: 480px) {
+    .arrow-container {
+    display: none;
+  } */
+  /* } */
 </style>
